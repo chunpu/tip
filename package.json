@@ -1,0 +1,13 @@
+{
+  "name": "tip",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"browser": "browserify browser/main.js > browser/bundle.js",
+	"readme": "pretty-readme > readme.md"
+  },
+  "author": "",
+  "license": "ISC"
+}

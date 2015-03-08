@@ -1,0 +1,31 @@
+.tip {
+    position: absolute;
+    padding: 5px 0;
+    z-index: 1000;
+    width: 100px;
+}
+
+.tip-inner {
+    background: #000;
+    color: #fff;
+    padding: 8px 10px 7px 10px;
+    text-align: center;
+}
+
+.tip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 5px dashed #000;
+}
+
+.tip .tip-arrow {
+    top: 0px;
+    left: 50%;
+    margin-left: -5px;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
