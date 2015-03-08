@@ -27,7 +27,7 @@ Usage
 [online demo](http://chunpu.github.io/tip/browser/)
 
 ```js
-var Tip = require('../')
+var Tip = require('tip')
 
 $(function() {
 	var tip = Tip($('<div>tip</div>'))
