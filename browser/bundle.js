@@ -20,11 +20,12 @@ var initCss = {
 
 var wrapper = $('<div class="tip"><div class="tip-arrow"></div><div class="tip-inner"></div></div>')
 
-function Tip(val) {
-    if (!(this instanceof Tip)) return new Tip(val)
+function Tip(val, opt) {
+    if (!(this instanceof Tip)) return new Tip(val, opt)
     if (!body) body = $('body')
 
     var me = this
+	me.opt = opt || {}
     var $tip = wrapper.clone().find('.tip-inner').append($(val)).end()
     .on('mouseenter click', function() {
         clearTimeout(me.timer)
@@ -62,6 +63,7 @@ proto.attach = function(el) {
 
 proto.show = function(el) {
     var el = $(el).eq(0)
+	this.target = el
     if (!el[0]) return
     var $tip = this.tip
     var target = {
@@ -81,6 +83,10 @@ proto.show = function(el) {
         // rawOffset + left + tip.width / 2 = target.left + target.width / 2
         left: target.offset.left + target.width / 2 - tip.width / 2 - tip.rawOffset.left
     }
+	var hook = this.opt.offsetHook
+	if (hook) {
+		offset = hook.call(this, offset)
+	}
     $tip.css({
         left: offset.left,
         top: offset.top,
