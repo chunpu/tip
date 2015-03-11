@@ -32,9 +32,11 @@ var proto = Tip.prototype
 proto.hide = function(ms) {
 	var me = this
 	if (ms) {
-		me.timer = setTimeout(function() {
-			me.hide()
-		}, ms)
+		if (!me.opt.stay) {
+			me.timer = setTimeout(function() {
+				me.hide()
+			}, ms)
+		}
 		return
 	}
 	me.tip.css(initCss)
