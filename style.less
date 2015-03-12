@@ -1,0 +1,70 @@
+@arrow-size: 5px;
+
+.tip {
+    position: absolute;
+    z-index: 1000;
+	.tip-body {
+		padding: 10px;
+		text-align: center;
+	}
+
+	&.tip-basic {
+		@bg-color: #000;
+    	padding: @arrow-size 0;
+		.tip-arrow {
+			position: absolute;
+			width: 0;
+			height: 0;
+			line-height: 0;
+			border: @arrow-size dashed @bg-color;
+
+			top: 0;
+			left: 50%;
+			margin-left: -@arrow-size;
+			border-bottom-style: solid;
+			border-top: none;
+			border-left-color: transparent;
+			border-right-color: transparent;
+		}
+		.tip-body {
+			background: @bg-color;
+			color: #fff;
+		}
+	}
+
+	&.tip-border {
+    	padding: @arrow-size+1 0;
+		@bd-color: #ddd;
+		@bg-color: #fafafa;
+
+		.tip-head {
+			position: absolute;
+			border: @arrow-size + 2 dashed transparent;
+			border-bottom: @arrow-size + 2 solid @bd-color;
+			display: block;
+			width: 0;
+			height: 0;
+			line-height: 0;
+			font-size: 0;
+			position: absolute;
+			top: -(@arrow-size + 2);
+			left: 50%;
+			margin-left: -@arrow-size;
+
+			.tip-arrow {
+				position: absolute;
+				border: @arrow-size + 1 dashed transparent;
+				border-bottom: @arrow-size + 1 solid #fafafa;
+				left: -(@arrow-size + 1);
+				top: -@arrow-size;
+			}
+		}
+
+		.tip-body {
+			background: @bg-color;
+			border: 1px solid @bd-color;
+		}
+	}
+}
+
+

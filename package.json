@@ -1,13 +1,15 @@
 {
   "name": "tip",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.6",
+  "description": "Simple Tip plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"browser": "browserify browser/main.js > browser/bundle.js",
+	"build-js": "browserify browser/main.js > browser/bundle.js",
+	"build-css": "lessc style.less > browser/style.css",
+	"build": "npm run build-js && npm run build-css",
 	"readme": "pretty-readme > readme.md"
   },
-  "author": "",
+  "author": "chunpu",
   "license": "ISC"
 }

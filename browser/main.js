@@ -1,6 +1,15 @@
 var Tip = require('../')
 
 $(function() {
-	var tip = Tip($('<div>tip</div>'), {stay: true})
-	tip.attach('.target')
+	var basicTip = Tip('<div>tip1</div>', {
+		stay: true,
+		style: 'basic'
+	})
+	basicTip.attach('[data-type="basic"]')
+
+	var borderTip = Tip('<div>tip2</div>', {
+		stay: true,
+		style: 'border'
+	})
+	borderTip.attach('[data-type="border"]')
 })

@@ -16,3 +16,17 @@ Support
 ---
 
 IE6+
+
+
+Api
+---
+
+```js
+var tip = Tip(nodelist, options)
+```
+
+
+#### Options
+
+- `stay` Boolean, if true then won't hide after mouseleave
+- `offsetHook` Function, change raw offset

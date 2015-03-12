@@ -2,8 +2,17 @@
 var Tip = require('../')
 
 $(function() {
-	var tip = Tip($('<div>tip</div>'), {stay: true})
-	tip.attach('.target')
+	var basicTip = Tip('<div>tip1</div>', {
+		stay: true,
+		style: 'basic'
+	})
+	basicTip.attach('[data-type="basic"]')
+
+	var borderTip = Tip('<div>tip2</div>', {
+		stay: true,
+		style: 'border'
+	})
+	borderTip.attach('[data-type="border"]')
 })
 
 },{"../":2}],2:[function(require,module,exports){
@@ -18,7 +27,7 @@ var initCss = {
 	, display: 'block'
 }
 
-var wrapper = $('<div class="tip"><div class="tip-arrow"></div><div class="tip-inner"></div></div>')
+var wrapper = $('<div class="tip"><div class="tip-head"><div class="tip-arrow"></div></div><div class="tip-body"></div></div>')
 
 function Tip(val, opt) {
 	if (!(this instanceof Tip)) return new Tip(val, opt)
@@ -26,12 +35,22 @@ function Tip(val, opt) {
 
 	var me = this
 	me.opt = opt || {}
-	var $tip = wrapper.clone().find('.tip-inner').append($(val)).end()
-	.on('mouseenter click', function() {
-		clearTimeout(me.timer)
-	}).on('mouseleave', function() {
-		me.hide(200)
-	}).appendTo(body)
+	var style = opt.style || 'basic'
+
+	var $tip = wrapper
+		.clone()
+		.find('.tip-body')
+		.append($(val))
+		.end()
+		.addClass('tip-' + style)
+		.on('mouseenter click', function() {
+			clearTimeout(me.timer)
+		})
+		.on('mouseleave', function() {
+			me.hide(200)
+		})
+		.appendTo(body)
+
 	$tip.css(initCss)
 	this.tip = $tip
 }
