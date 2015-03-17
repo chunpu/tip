@@ -9,7 +9,7 @@ var initCss = {
 	, display: 'block'
 }
 
-var wrapper = $('<div class="tip"><div class="tip-head"><div class="tip-arrow"></div></div><div class="tip-body"></div></div>')
+var wrapper = '<div class="tip"><div class="tip-head"><div class="tip-arrow"></div></div><div class="tip-body"></div></div>'
 
 function Tip(val, opt) {
 	if (!(this instanceof Tip)) return new Tip(val, opt)
@@ -19,8 +19,7 @@ function Tip(val, opt) {
 	me.opt = opt || {}
 	var style = opt.style || 'basic'
 
-	var $tip = wrapper
-		.clone()
+	var $tip = $(wrapper)
 		.find('.tip-body')
 		.append($(val))
 		.end()
@@ -31,7 +30,8 @@ function Tip(val, opt) {
 		.on('mouseleave', function() {
 			me.hide(200)
 		})
-		.appendTo(body)
+
+	body.append($tip)
 
 	$tip.css(initCss)
 	this.tip = $tip
@@ -98,8 +98,8 @@ proto.show = function(el) {
 		offset = hook.call(this, offset)
 	}
 	$tip.css({
-		left: offset.left,
-		top: offset.top,
+		left: offset.left + 'px',
+		top: offset.top + 'px',
 		visibility: 'visible'
 	})
 }
