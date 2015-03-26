@@ -1,4 +1,6 @@
-module.exports = Tip
+var render = require('min-var')
+
+module.exports = exports = Tip
 
 var body
 
@@ -9,7 +11,9 @@ var initCss = {
 	, display: 'block'
 }
 
-var wrapper = '<div class="tip"><div class="tip-head"><div class="tip-arrow"></div></div><div class="tip-body"></div></div>'
+exports.namespace = 'tip'
+
+var wrapper = replace('<div class="$name"><div class="$name-head"><div class="$name-arrow"></div></div><div class="$name-body"></div></div>')
 
 function Tip(val, opt) {
 	if (!(this instanceof Tip)) return new Tip(val, opt)
@@ -20,10 +24,10 @@ function Tip(val, opt) {
 	var style = opt.style || 'basic'
 
 	var $tip = $(wrapper)
-		.find('.tip-body')
+		.find(replace('.$name-body'))
 		.append($(val))
 		.end()
-		.addClass('tip-' + style)
+		.addClass(exports.namespace + '-' + style)
 		.on('mouseenter click', function() {
 			clearTimeout(me.timer)
 		})
@@ -101,5 +105,11 @@ proto.show = function(el) {
 		left: offset.left + 'px',
 		top: offset.top + 'px',
 		visibility: 'visible'
+	})
+}
+
+function replace(str) {
+	return render(str, {
+		name: exports.namespace
 	})
 }

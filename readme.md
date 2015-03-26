@@ -54,6 +54,19 @@ var tip = Tip(nodelist, options)
 - `stay` Boolean, if true then won't hide after mouseleave
 - `offsetHook` Function, change raw offset
 
+
+CSS
+--
+
+Custom style by lessc
+
+```less
+import "tip/style.less";
+
+@tip-arrow-size: 7px; // arrow size
+@tip-name: mytip; // class namespace, remember to change name in js also
+```
+
 License
 ---
 
