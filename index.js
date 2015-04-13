@@ -19,13 +19,21 @@ function Tip(val, opt) {
 	if (!(this instanceof Tip)) return new Tip(val, opt)
 	if (!body) body = $('body')
 
-	var me = this
-	me.opt = opt || {}
-	var style = opt.style || 'basic'
+	this.opt = opt || {}
+	this.val = val
+}
 
+var proto = Tip.prototype
+
+proto.init = function() {
+	// init tip
+	var me = this
+	if (me.inited) return
+	me.inited = true
+	var style = me.opt.style || 'basic'
 	var $tip = $(wrapper)
 		.find(replace('.$name-body'))
-		.append($(val))
+		.append($(me.val))
 		.end()
 		.addClass(exports.namespace + '-' + style)
 		.on('mouseenter click', function() {
@@ -38,10 +46,8 @@ function Tip(val, opt) {
 	body.append($tip)
 
 	$tip.css(initCss)
-	this.tip = $tip
+	me.tip = $tip
 }
-
-var proto = Tip.prototype
 
 proto.hide = function(ms) {
 	var me = this
@@ -68,6 +74,7 @@ proto.attach = function(el) {
 }
 
 proto.show = function(el) {
+	this.init() // init when first show to save resource
 	if (this.curr) {
 		// has shown
 		if (this.curr == el) return
