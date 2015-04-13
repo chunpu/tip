@@ -16,7 +16,10 @@ $(function() {
 })
 
 },{"../":2}],2:[function(require,module,exports){
+(function (global){
 var render = require('min-var')
+var jQuery = '$'
+var $ = global[jQuery] || require(jQuery)
 
 module.exports = exports = Tip
 
@@ -139,6 +142,7 @@ function replace(str) {
 	})
 }
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"min-var":3}],3:[function(require,module,exports){
 module.exports = exports = render
 

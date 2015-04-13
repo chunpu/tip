@@ -1,6 +1,6 @@
 {
   "name": "tip",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple Tip plugin",
   "main": "index.js",
   "scripts": {

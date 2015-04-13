@@ -1,4 +1,6 @@
 var render = require('min-var')
+var jQuery = '$'
+var $ = global[jQuery] || require(jQuery)
 
 module.exports = exports = Tip
 
