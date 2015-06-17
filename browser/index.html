@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Tip</title>
 		<link href="./style.css" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script src="./bundle.js"></script>
 	</head>
 	<style>
@@ -27,8 +27,24 @@
 		margin: 50px 0;
 		clear: both;
 	}
+
+	.box {
+		position: relative;
+		margin: 0 auto;
+		width: 1200px;
+	}
+	.son {
+		position: absolute;
+		left: 100px;
+		top: 100px;
+	}
 	</style>
 	<body>
+		<div style="position: relative; margin-bottom: 15px; height: 200px;">
+			<div style="position: absolute; right: 0; bottom: 5px;">
+				<div class="target" data-type="basic">basic style</div>
+			</div>
+		</div>
 		<div class="target" data-type="basic">basic style</div>
 		<div class="target" data-type="basic">basic style</div>
 		<div class="target" data-type="basic">basic style</div>
